@@ -14,18 +14,6 @@ ionMode <- paste0(args[2])
 file_list <- paste0("metadata_",ionMode,".txt")
 files <- read.table(file = file_list,sep="\t",header=TRUE)
 
-# Load params
-params <- read.csv("params.csv", row.names = 1)
-minw <- params['minw',ionMode]
-maxw <- params['maxw',ionMode]
-noise <- params['noise',ionMode]
-ppm <- params['ppm',ionMode]
-prescan <- params['prescan',ionMode]
-preintensity <- params['preintensity',ionMode]
-snthresh <- params['snthresh',ionMode]
-rmse <- params['rmse',ionMode]
-bw <- params['bw',ionMode]
-
 # File to process based on array number
 f<- as.numeric(paste0(args[3]))
 raw_file <- files$FileWithExtension[f]
@@ -39,7 +27,7 @@ output_dir<- paste0(args[4])
 file <- readMSData(files=paste0(pre,raw_file),pdata = new("NAnnotatedDataFrame",files[f,]) ,mode="onDisk")
 
 # Set peak picking parameters
-minWidth=minw; maxWidth=maxw; NOISE=noise; PPM=ppm; PreScan=prescan; PreIntensity=preintensity; SNTHRESH=snthresh;
+minWidth=7;maxWidth=14;NOISE=100;PPM=15;PreScan=3;PreIntensity=900;SNTHRESH=5;
 cwp <- CentWaveParam(peakwidth = c(minWidth, maxWidth), noise = NOISE, ppm = PPM, mzCenterFun = "wMean", prefilter = c(PreScan,PreIntensity),integrate = 2, mzdiff = -0.005, fitgauss = TRUE, snthresh = SNTHRESH, extendLengthMSW = TRUE, verboseColumns = TRUE)
 
 # Perform peak picking on file
@@ -47,7 +35,12 @@ xs <- findChromPeaks(file, param = cwp)
 
 # Filter based on Gaussian RMSE
 peakmat <- chromPeaks(xs)
-peakmat.new <- peakmat[which(peakmat[,'egauss'] < rmse),]
+
+#pos
+#peakmat.new <- rbind(peakmat[which(peakmat[,'egauss'] < 0.125),], peakmat[which(peakmat[,'egauss'] < 0.2 & peakmat[,'mzmin'] > 176.028 & peakmat[,'mzmax'] < 176.0379),])
+
+#neg
+peakmat.new <- peakmat[which(peakmat[,'egauss'] < 0.125),]
 
 xs.filt <- xs
 chromPeaks(xs.filt) <- peakmat.new

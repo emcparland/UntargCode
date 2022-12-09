@@ -1,7 +1,7 @@
 suppressMessages(library(xcms))
 suppressMessages(library(CAMERA))
 
-setwd("~/untarg_xcms/output_dir/xcms2")
+setwd("~/untarg_xcms/mzML_MS2021/output_dir/xcms2")
 
 # Ion Mode
 modes <- c("pos","neg")
@@ -15,7 +15,7 @@ for (i in 1:2){
 	xset <- readRDS(paste0(mode,"_xset.rds"))
 
 # Create idx for just samples. Create annotate object. Note could use sample = NA which allows CAMERA to choose reresentative sample for each pseudospectra. Might save time?
-idx <- grep("BIOSSCOPE pool |MQ Blank", processedData@phenoData@data$Sample.Name, invert = T)
+idx <- grep("BIOSSCOPE pool |MQ Blank| curve ", processedData@phenoData@data$Sample.Name, invert = T)
 nSamples <- length(idx)
 xsa<-xsAnnotate(xset,sample=idx)
 
@@ -42,19 +42,17 @@ xsa.neg <- an}
 if (mode == "pos"){
 xsa.pos <- an}
 	
-# Save csv of peakTable and clean up
-#write.csv(file=paste0("camera_",mode,".csv"),getPeaklist(an))
+# Save csv of peakTable
+write.csv(file=paste0("camera_",mode,".csv"),getPeaklist(an))
 rm(xset, xsa, xsaF, xsaFI, xsaC, an, processedData)
 }
 
-# Search for pseudospectra from the positive and the negative sample within specified retention time window. For every result the m/z differences between both samples are matched against rules, for pos and neg ion. If two ions match, the ion annotations are changed (previous annotation is wrong), confirmed or added. Returns the peaklist from one ion mode with recalculated annotations so I repeat to be able to jump between modes.
+# Search for pseudospectra from the positive and the negative sample within specified retention time window. For every result the m/z differences between both samples are matched against rules, for pos and neg ion. If two ions match, the ion annotations are changed (previous annotation is wrong), confirmed or added. Returns the peaklist from one ion mode with recalculated annotations.
 
-xsa.pos_all <- combinexsAnnos(xsa.pos, xsa.neg, pos=TRUE, tol=2, ruleset=NULL)
-xsa.neg_all <- combinexsAnnos(xsa.pos, xsa.neg, pos=FALSE, tol=2, ruleset=NULL)
+xsa.all <- combinexsAnnos(xsa.pos, xsa.neg, pos=TRUE, tol=2, ruleset=NULL)
 
 # Save final product
-write.csv(file="camera_pos.csv", xsa.pos_all)
-write.csv(file="camera_neg.csv", xsa.neg_all)
+write.csv(file="camera_all.csv", xsa.all)
 saveRDS(c(xsa.pos,xsa.neg), file = "camera_results.rds")
 
 

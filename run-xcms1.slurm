@@ -8,12 +8,12 @@
 #SBATCH --time=12:00:00
 #SBATCH --output=xcms1_%A-%a.out
 #SBATCH --error=xcms1_%A-%a.error
-#SBATCH --array=1-502%40
+#SBATCH --array=1-514%40
 
-dir="$HOME/untarg_xcms"
+dir="$HOME/untarg_xcms/mzML_MSn2022"
 cd "$dir"
 
-in_dir="/vortexfs1/omics/kujawinski/data/biosscope_untarg_mzml"
+in_dir="/vortexfs1/omics/kujawinski/data/biosscope_untarg_mzML_MSn"
 out_dir="$dir/output_dir/$SLURM_JOB_NAME"
 if [ ! -d "$out_dir" ]; then
     mkdir -p "$out_dir"
