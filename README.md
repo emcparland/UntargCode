@@ -89,7 +89,7 @@ All samples were spiked with a mix of the following internal standards.
 | cysteine | D3 | 1000 | positive | 124.0385 |
 | guanosine | D2 | 50 | both | 285.1043 |
 | malic acid (DL) | D3 | 100 | negative | 137.0403 |
-| phenyalanine | D8 | 50 | both | 173.1292 |
+| phenylalanine | D8 | 50 | both | 173.1292 |
 | proline | 13C5,15N | 25 | positive | 121.0771 |
 | lysine | D4 | 750 | positive | 150.1306 |
 | xanthine | 15N2 | 50 | both | 154.0275 |
