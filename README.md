@@ -77,3 +77,15 @@ CAMERA also uses the xcmsSet object. You will need both positive and negative io
 ```sbatch scripts_dir/run-camera.slurm```
 
 
+## Stable isotope labeled internal standards.
+All samples were spiked with a mix of the following internal standards.
+
+| compound | label | final ng/ml | ion mode | exact mass |
+| -------- | ----- | ----------- | -------- | ---------- |
+| 3m2ob    | 13C5  | 150         | negative | 121.0641   |
+| ketoglutaric acid    | 13C5  | 150         | negative | 121.0641   |
+| 3m2ob    | 13C5  | 150         | negative | 121.0641   |
+| 3m2ob    | 13C5  | 150         | negative | 121.0641   |
+| 3m2ob    | 13C5  | 150         | negative | 121.0641   |
+| 3m2ob    | 13C5  | 150         | negative | 121.0641   |
+
