@@ -82,10 +82,25 @@ All samples were spiked with a mix of the following internal standards.
 
 | compound | label | final ng/ml | ion mode | exact mass |
 | -------- | ----- | ----------- | -------- | ---------- |
-| 3m2ob    | 13C5  | 150         | negative | 121.0641   |
-| ketoglutaric acid    | 13C5  | 150         | negative | 121.0641   |
-| 3m2ob    | 13C5  | 150         | negative | 121.0641   |
-| 3m2ob    | 13C5  | 150         | negative | 121.0641   |
-| 3m2ob    | 13C5  | 150         | negative | 121.0641   |
-| 3m2ob    | 13C5  | 150         | negative | 121.0641   |
-
+| 3m2ob    | 13C5  | 150 | negative | 121.0641 |
+| alpha-ketoglutaric acid | D6 | 2000 | negative | 152.0592 |
+| betaine | D11 | 20 | positive | 128.1481 |
+| citric acid | D4 | 250 | negative | 196.0521 |
+| cysteine | D3 | 1000 | positive | 124.0385 |
+| guanosine | D2 | 50 | both | 285.1043 |
+| malic acid (DL) | D3 | 100 | negative | 137.0403 |
+| phenyalanine | D8 | 50 | both | 173.1292 |
+| proline | 13C5,15N | 25 | positive | 121.0771 |
+| lysine | D4 | 750 | positive | 150.1306 |
+| xanthine | 15N2 | 50 | both | 154.0275 |
+| 4 aminobenzoic acid | D4 | 2000 | positive | 141.0728 |
+| sn-glycerol-3-phosphate | 13C3 | 500 | both | 175.0238 |
+| pyridoxine (vitamin B6) | 13C4 | 25 | both | 173.0873 |
+| pantothenate | 13C3,15N | 25 | both | 223.1178 |
+| leucine | D3 | 50 | both | 134.1134 |
+| AMP | 15N5 | 100 | both | 352.0483 |
+| methionine | D3 | 50 | both | 152.0698 |
+| biotin | D2 | 50 | both | 246.1008 |
+| succinic acid | D6 | 500 | negative | 124.0643 |
+| cholic acid | D4 | 50 | negative | 412.3127 |
+| indole-3-acetic acid | D7 | 1000 | negative | 182.1072 |
